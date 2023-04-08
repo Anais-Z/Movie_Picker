@@ -24,9 +24,8 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("Movie name is \(selectedName)")
-                .foregroundColor(.blue)
-            
+        
+
             //text field to input the name of the movie
             TextField("Movie", text: $selectedName)
             
@@ -41,9 +40,8 @@ struct ContentView: View {
             }
             .pickerStyle(.segmented)
             
-            Text("Selected genre is \(selectedGenre)")
-                .foregroundColor(.red)
-            
+          
+            //Picker for the ratings
             Picker("Rating", selection: $selectedRating)
             {
                 ForEach(ratings, id: \.self){ rating in
@@ -51,9 +49,7 @@ struct ContentView: View {
                 }
             }
             
-            
-            
-            Text("Rating is \(self.selectedRating) stars")
+
             
             //the submut button
             Button(action:{
