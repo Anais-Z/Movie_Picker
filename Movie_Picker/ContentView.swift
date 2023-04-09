@@ -27,72 +27,83 @@ struct ContentView: View {
     
     @State private var isShowingAlert = false
     
+  
+    
     var body: some View {
-        VStack {
-        
-
-            //text field to input the name of the movie
-            TextField("Movie", text: $selectedName)
-            
-            //Picker for the genres, the values will be placed for selectedGenre
-            Picker("Genre", selection: $selectedGenre)
-            {
-                //Goes through the genres list and displays them using text
-                ForEach(genres, id: \.self)
+        NavigationView{
+            VStack {
+                //navigate to Movie View
+                NavigationLink(destination: MovieView(movies: movieList)){
+                    Text("See Movie List")
+                }
+                
+                //text field to input the name of the movie
+                TextField("Movie", text: $selectedName)
+                
+                //Picker for the genres, the values will be placed for selectedGenre
+                Picker("Genre", selection: $selectedGenre)
                 {
-                    Text($0)
-                }
-            }
-            .pickerStyle(.segmented)
-            
-          
-            //Picker for the ratings
-            Picker("Rating", selection: $selectedRating)
-            {
-                ForEach(ratings, id: \.self){ rating in
-                    Text(String(rating))
-                }
-            }
-            
-
-            
-            //the submut button
-            Button(action:{
-                
-                //checks if the movie's name is an empty string
-                if(self.selectedName == ""){
-                    
-                    self.isShowingAlert = true
-                    self.movieSentence = "Please enter the movie's name"
-                }else{
-                    
-                    self.movieSentence = submitMovie()
-                    
-                    
-                    //create a new movie object
-                    var newMovie = Movie(name: self.selectedName, genre: self.selectedGenre, rating: self.selectedRating)
-                    
-                    //append movie object the movie list
-                    self.movieList.append(newMovie)
-                    
-                    //set isShowingAlert to true
-                    self.isShowingAlert = true
-                }
-                    
-              
-                
-            }){
-                Text("Submit now")
-                    .foregroundColor(.yellow)
-                    .padding()
-            }
-            .background(.cyan)
-            .cornerRadius(10)
-            .alert("\(self.movieSentence)", isPresented: $isShowingAlert) {
-                        Button("OK", role: .cancel) { }
+                    //Goes through the genres list and displays them using text
+                    ForEach(genres, id: \.self)
+                    {
+                        Text($0)
                     }
+                }
+                .pickerStyle(.segmented)
+                
+                
+                //Picker for the ratings
+                Picker("Rating", selection: $selectedRating)
+                {
+                    ForEach(ratings, id: \.self){ rating in
+                        Text(String(rating))
+                    }
+                }
+                
+                
+                
+                //the submut button
+                Button(action:{
+                    
+                    //checks if the movie's name is an empty string
+                    if(self.selectedName == ""){
+                        
+                        self.isShowingAlert = true
+                        self.movieSentence = "Please enter the movie's name"
+                    }else{
+                        
+                        self.movieSentence = submitMovie()
+                        
+                        
+                        //create a new movie object
+                        var newMovie = Movie(name: self.selectedName, genre: self.selectedGenre, rating: self.selectedRating)
+                        
+                        //append movie object the movie list
+                        self.movieList.append(newMovie)
+                        
+                        //set isShowingAlert to true
+                        self.isShowingAlert = true
+                    }
+                    
+                    
+                    
+                }){
+                    Text("Submit now")
+                        .foregroundColor(.yellow)
+                        .padding()
+                }
+                .background(.cyan)
+                .cornerRadius(10)
+                .alert("\(self.movieSentence)", isPresented: $isShowingAlert) {
+                    Button("OK", role: .cancel) { }
+                }
+                
+               
+                
+                
+            }
+            .padding()
         }
-        .padding()
     }
     
     func submitMovie() -> String {
