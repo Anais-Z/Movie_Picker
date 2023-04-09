@@ -58,17 +58,28 @@ struct ContentView: View {
             
             //the submut button
             Button(action:{
-                self.movieSentence = submitMovie()
                 
-                
-                //create a new movie object
-                var newMovie = Movie(name: self.selectedName, genre: self.selectedGenre, rating: self.selectedRating)
-                
-                //append movie object the movie list
-                self.movieList.append(newMovie)
-                
-                //set isShowingAlert to true
-                self.isShowingAlert = true
+                //checks if the movie's name is an empty string
+                if(self.selectedName == ""){
+                    
+                    self.isShowingAlert = true
+                    self.movieSentence = "Please enter the movie's name"
+                }else{
+                    
+                    self.movieSentence = submitMovie()
+                    
+                    
+                    //create a new movie object
+                    var newMovie = Movie(name: self.selectedName, genre: self.selectedGenre, rating: self.selectedRating)
+                    
+                    //append movie object the movie list
+                    self.movieList.append(newMovie)
+                    
+                    //set isShowingAlert to true
+                    self.isShowingAlert = true
+                }
+                    
+              
                 
             }){
                 Text("Submit now")
@@ -77,9 +88,9 @@ struct ContentView: View {
             }
             .background(.cyan)
             .cornerRadius(10)
-         
-            Text("\(self.movieSentence)")
-            
+            .alert("\(self.movieSentence)", isPresented: $isShowingAlert) {
+                        Button("OK", role: .cancel) { }
+                    }
         }
         .padding()
     }
