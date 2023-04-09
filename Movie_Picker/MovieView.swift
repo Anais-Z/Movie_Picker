@@ -11,14 +11,19 @@ struct MovieView: View {
     var movies = [Movie]()
     
     var body: some View {
-        Text("Movie View ")
+        Text("Movie List ")
         
-        //Looping through the movie list
+        //Iterate through the movie list
         List(movies, id:\.id){ movie in
-            VStack{
+            VStack(alignment: .leading){
                 Text("Movie : \(movie.name)")
+                    .foregroundColor(.blue)
+  
                 Text("Genre : \(movie.genre)")
+                    .foregroundColor(.red)
+
                 Text("Rating : \(movie.rating) stars")
+                    .foregroundColor(.yellow)
             }
             
         }
