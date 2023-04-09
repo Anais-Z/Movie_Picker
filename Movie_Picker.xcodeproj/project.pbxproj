@@ -12,6 +12,7 @@
 		84589D2429E1CAE60020FB5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84589D2329E1CAE60020FB5D /* Assets.xcassets */; };
 		84589D2729E1CAE60020FB5D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84589D2629E1CAE60020FB5D /* Preview Assets.xcassets */; };
 		84589D2E29E1ED4B0020FB5D /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84589D2D29E1ED4B0020FB5D /* Movie.swift */; };
+		8465301629E2468A00D93753 /* MovieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465301529E2468A00D93753 /* MovieView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		84589D2329E1CAE60020FB5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84589D2629E1CAE60020FB5D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		84589D2D29E1ED4B0020FB5D /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		8465301529E2468A00D93753 /* MovieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				84589D2329E1CAE60020FB5D /* Assets.xcassets */,
 				84589D2529E1CAE60020FB5D /* Preview Content */,
 				84589D2D29E1ED4B0020FB5D /* Movie.swift */,
+				8465301529E2468A00D93753 /* MovieView.swift */,
 			);
 			path = Movie_Picker;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84589D2229E1CAE40020FB5D /* ContentView.swift in Sources */,
+				8465301629E2468A00D93753 /* MovieView.swift in Sources */,
 				84589D2029E1CAE40020FB5D /* Movie_PickerApp.swift in Sources */,
 				84589D2E29E1ED4B0020FB5D /* Movie.swift in Sources */,
 			);
