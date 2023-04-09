@@ -32,13 +32,10 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             VStack {
-                //navigate to Movie View
-                NavigationLink(destination: MovieView(movies: movieList)){
-                    Text("See Movie List")
-                }
-                
+    
                 //text field to input the name of the movie
-                TextField("Movie", text: $selectedName)
+                TextField("Enter Movie", text: $selectedName)
+                    .multilineTextAlignment(.center)
                 
                 //Picker for the genres, the values will be placed for selectedGenre
                 Picker("Genre", selection: $selectedGenre)
@@ -52,11 +49,20 @@ struct ContentView: View {
                 .pickerStyle(.segmented)
                 
                 
-                //Picker for the ratings
-                Picker("Rating", selection: $selectedRating)
-                {
-                    ForEach(ratings, id: \.self){ rating in
-                        Text(String(rating))
+                
+                Group{
+                    HStack{
+                        
+                        Text("Rating:")
+                            .foregroundColor(.red)
+                        
+                        //Picker for the ratings
+                        Picker("Rating", selection: $selectedRating)
+                        {
+                            ForEach(ratings, id: \.self){ rating in
+                                Text(String(rating))
+                            }
+                        }
                     }
                 }
                 
@@ -76,7 +82,7 @@ struct ContentView: View {
                         
                         
                         //create a new movie object
-                        var newMovie = Movie(name: self.selectedName, genre: self.selectedGenre, rating: self.selectedRating)
+                        let newMovie = Movie(name: self.selectedName, genre: self.selectedGenre, rating: self.selectedRating)
                         
                         //append movie object the movie list
                         self.movieList.append(newMovie)
@@ -88,18 +94,23 @@ struct ContentView: View {
                     
                     
                 }){
-                    Text("Submit now")
-                        .foregroundColor(.yellow)
+                    Text("Submit Now")
+                        .foregroundColor(.white)
                         .padding()
                 }
-                .background(.cyan)
+                .background(.black)
                 .cornerRadius(10)
                 .alert("\(self.movieSentence)", isPresented: $isShowingAlert) {
                     Button("OK", role: .cancel) { }
                 }
                 
                
-                
+                //navigate to Movie View
+                    NavigationLink(destination: MovieView(movies: movieList)){
+                        Text("See Movie List")
+                            .foregroundColor(.blue)
+                            .cornerRadius(10)
+                    }
                 
             }
             .padding()
